@@ -23,6 +23,7 @@ public class PlayerContoller : MonoBehaviour
     public bool canLook = true;
 
     public Action inventory;
+    public Action option;
     private Rigidbody _rigidbody;
 
     private void Awake()
@@ -112,9 +113,19 @@ public class PlayerContoller : MonoBehaviour
 
     public void OnInventory(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started)
         {
             inventory?.Invoke();
+            ToggleCursor();
+        }
+
+    }
+
+    public void OnOption(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            option?.Invoke();
             ToggleCursor();
         }
     }
